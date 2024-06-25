@@ -1,0 +1,32 @@
+3. Crea una función esPrimo que tome un número como parámetro y devuelva true si es primo y false en caso contrario. Use la función para indicar si un número es primo, mostrando el mensaje “El número es Primo” o “El número no es Primo” según el caso.
+
+#include <iostream>
+using namespace std;
+
+bool esPrimo(int n) {
+    if (n <= 1) {
+        return false;
+    }
+    
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+int main() {
+    int numero;
+    cout << "Ingrese un número: ";
+    cin >> numero;
+    
+    if (esPrimo(numero)) {
+        cout << "El número es Primo" << endl;
+    } else {
+        cout << "El número no es Primo" << endl;
+    }
+    
+    return 0;
+}
