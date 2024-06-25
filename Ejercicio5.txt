@@ -1,0 +1,17 @@
+5. El dueño de una tienda compra un artículo a un precio determinado. Crear una función que tome el precio de compra y un porcentaje de ganancia N, y devuelva el precio de venta necesario para obtener esa ganancia.
+
+#include <iostream>
+using namespace std;
+
+double f(int pc, int pg){
+    return pc + (pc * pg / 100);
+}
+
+int main(){
+    int pc, pg;
+    cout << "Ingrese el precio de compra del artículo: ";
+    cin >> pc;
+    cout << "Ingrese el porcentaje de ganancia deseado: ";
+    cin >> pg;
+    cout << "El precio de venta necesario para obtener una ganancia del " << pg << "% es: " << f(pc, pg) << endl;
+}
