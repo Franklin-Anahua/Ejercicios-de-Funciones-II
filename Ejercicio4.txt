@@ -1,25 +1,39 @@
-4. Cree una función que tome tres números como parámetros y devuelva el mayor de ellos.
+4. Cálculo de Raíces de una Ecuación Cuadrática: Crea un programa que calcule las raíces de una 
+ecuación cuadrática utilizando la fórmula general. Utiliza la función sqrt de la librería cmath para 
+calcular la raíz cuadrada. Solicita al usuario los coeficientes de la ecuación (a, b, c) y muestra las 
+raíces obtenidas. Considera los casos en los que las raíces son reales o complejas.
+
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-int mayo(int num1, int num2, int num3){
-    if (num1 >= num2 && num1 >= num3){
-        return num1;
+void ecuacion(double a, double b, double c){
+	double discriminante, x1, x2, realPart, imaginaryPart;
+	discriminante = b * b - 4 * a * c;
+    if (discriminante > 0) {
+        x1 = (-b + sqrt(discriminante)) / (2 * a);
+        x2 = (-b - sqrt(discriminante)) / (2 * a);
+        cout << "Las raices son reales y distintas: x1 = " << x1 << " y x2 = " << x2 << endl;
+    } else if (discriminante == 0) {
+        x1 = -b / (2 * a);
+        std::cout << "La raiz es real e igual: x = " << x1 << endl;
     } else {
-        if (num2 >= num1 && num2 >= num3){
-            return num2;
-        }
-        return num3;
+        realPart = -b / (2 * a);
+        imaginaryPart = sqrt(-discriminante) / (2 * a);
+        cout << "Las raices son complejas conjugadas: x1 = " << realPart << " + " << imaginaryPart << "i y x2 = " << realPart << " - " << imaginaryPart << "i" << endl;
     }
+	
 }
 
-int main(){
-    int num1, num2, num3;
-    cout << "Escrie tres numeros: " << endl;
-    cin >> num1;
-    cin >> num2;
-    cin >> num3;
-    int Mayor =  mayo(num1, num2, num3);
-    cout << "El numero mayor es: " << Mayor << endl;
+int main() {
+    double a, b, c;
+    cout << "Ingrese el coeficiente a: ";
+    cin >> a;
+    cout << "Ingrese el coeficiente b: ";
+    cin >> b;
+    cout << "Ingrese el término independiente c: ";
+    cin >> c;
+    ecuacion(a, b, c);
+    return 0;
 }
