@@ -1,17 +1,46 @@
-5. El dueño de una tienda compra un artículo a un precio determinado. Crear una función que tome el precio de compra y un porcentaje de ganancia N, y devuelva el precio de venta necesario para obtener esa ganancia.
+5. Función calcularRaices: Amplía el ejercicio anterior definiendo una función void llamada 
+calcularRaices que reciba los coeficientes de la ecuación (a, b, c) por valor y las variables donde 
+se almacenarán las raíces por referencia. Además, incluye una variable por referencia que indique si 
+las raíces son reales o complejas. La función debe calcular las raíces utilizando la fórmula general y 
+actualizar las variables correspondientes.
 
 #include <iostream>
+#include <cmath>
+#include <cstdlib>
 using namespace std;
 
-double f(int pc, int pg){
-    return pc + (pc * pg / 100);
+void calcularRaices(double a, double b, double c){
+	double discriminante, x1, x2, realPart, imaginaryPart;
+	discriminante = b * b - 4 * a * c;
+    if (discriminante > 0) {
+        x1 = (-b + sqrt(discriminante)) / (2 * a);
+        x2 = (-b - sqrt(discriminante)) / (2 * a);
+        cout << "Las raices son reales y distintas: x1 = " << x1 << " y x2 = " << x2 << endl;
+    } else if (discriminante == 0) {
+        x1 = -b / (2 * a);
+        cout << "La raíz es real e igual: x = " << x1 << endl;
+    } else {
+        realPart = -b / (2 * a);
+        imaginaryPart = sqrt(-discriminante) / (2 * a);
+        cout << "Las raices son complejas conjugadas: x1 = " << realPart << " + " << imaginaryPart << "i y x2 = " << realPart << " - " << imaginaryPart << "i" << endl;
+    }
+	
 }
 
-int main(){
-    int pc, pg;
-    cout << "Ingrese el precio de compra del artículo: ";
-    cin >> pc;
-    cout << "Ingrese el porcentaje de ganancia deseado: ";
-    cin >> pg;
-    cout << "El precio de venta necesario para obtener una ganancia del " << pg << "% es: " << f(pc, pg) << endl;
+int main() {
+    double a, b, c;
+    do {
+		system("cls");
+    	cout << "Ingrese el coeficiente a: ";
+    	cin >> a;
+    	cout << "Ingrese el coeficiente b: ";
+    	cin >> b;
+    	cout << "Ingrese el termino independiente c: ";
+    	cin >> c;
+    	if (a==0){
+    		cout << "Ya no es una ecuacion cuadratica, vuelva a ingresar los valores";
+		}
+	} while (a==0);
+	calcularRaices(a, b, c);
+    return 0;
 }
