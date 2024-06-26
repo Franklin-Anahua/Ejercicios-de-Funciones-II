@@ -1,31 +1,22 @@
-3. Crea una función esPrimo que tome un número como parámetro y devuelva true si es primo y false en caso contrario. Use la función para indicar si un número es primo, mostrando el mensaje “El número es Primo” o “El número no es Primo” según el caso.
+3. Cálculo de la Hipotenusa: Crea un programa que calcule la hipotenusa de un triángulo rectángulo 
+utilizando la fórmula de Pitágoras. Solicita al usuario los valores de los catetos y utiliza la función 
+sqrt de cmath para calcular la raíz cuadrada de la suma de los cuadrados de los catetos. Muestra el 
+resultado de la hipotenusa calculada.
 
 #include <iostream>
+#include <cmath>
 using namespace std;
-bool esPrimo(int n) {
-    if (n <= 1) {
-        return false;
-    }
-    
-    for (int i = 2; i * i <= n; i++) {
-        if (n % i == 0) {
-            return false;
-        }
-    }
-    
-    return true;
+
+double hipotenusa(double catetoA, double catetoB){
+	return sqrt(pow(catetoA, 2) + pow(catetoB, 2));
 }
 
 int main() {
-    int numero;
-    cout << "Ingrese un número: ";
-    cin >> numero;
-    
-    if (esPrimo(numero)) {
-        cout << "El número es Primo" << endl;
-    } else {
-        cout << "El número no es Primo" << endl;
-    }
-    
+    double catetoA, catetoB;
+    cout << "Ingrese la longitud del cateto A: ";
+    cin >> catetoA;
+    cout << "Ingrese la longitud del cateto B: ";
+    cin >> catetoB;
+    cout << "La hipotenusa del triangulo rectangulo es: " << hipotenusa(catetoA, catetoB) << endl;
     return 0;
 }
