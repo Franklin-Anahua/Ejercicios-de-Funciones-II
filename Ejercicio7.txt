@@ -1,0 +1,22 @@
+7. Cree un algoritmo para realizar la suma de los dígitos de un número. Haga uso de una función que, dado un número, retorne la suma de sus dígitos.
+
+#include <iostream>
+using namespace std;
+
+int sumarDigitos(int num) {
+    int suma = 0;
+    while (num != 0) {
+        suma += num % 10;
+        num /= 10;
+    }
+    return suma;
+}
+
+int main() {
+    int num;
+    cout << "Ingrese un numero: ";
+    cin >> num;
+    int resultado = sumarDigitos(num);
+    cout << "La suma de los digitos de " << num << " es: " << resultado << endl;
+    return 0;
+}
