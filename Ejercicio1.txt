@@ -1,20 +1,20 @@
-1. Un alumno desea saber cuál será su calificación final en la primera unidad en el curso de fundamentos de programación. La calificación final se compone de los siguientes porcentajes: 40% de Evidencia de conocimiento, 35% de Evidencia de desempeño, y 25% de Evidencia de producto. Haga uso de funciones para el cálculo de la calificación final.
+1. Cálculo del Área de un Círculo: Implementa un programa que calcule el área de un círculo dado su 
+radio. Utiliza la constante M_PI de la librería cmath para obtener el valor de pi. Solicita al usuario el 
+radio del círculo y utiliza la función pow de cmath para calcular el cuadrado del radio. Muestra el 
+resultado del área calculada.
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-double cal( int co, int des, int pro ){
-    return co * 0.4 + des * 0.35 + pro * 0.25;
+double Area(double radio){
+	return M_PI * pow(radio, 2);
 }
-int main()
-{
-    int co, des, pro;
-    cout << "Ingrese la calificación de la Evidencia de Conocimiento: ";
-    cin >> co;
-    cout << "Ingrese la calificación de la Evidencia de Desempeño: ";
-    cin >> des;
-    cout << "Ingrese la calificación de la Evidencia de Producto: ";
-    cin >> pro;
-    cout << "La calificación final es: " << cal( co, pro, des ) << endl;
+
+int main() {
+    double radio;
+    cout << "Ingrese el radio del círculo: ";
+    cin >> radio;
+    cout << "El área del círculo con radio " << radio << " es: " << Area(radio) << endl;
     return 0;
 }
