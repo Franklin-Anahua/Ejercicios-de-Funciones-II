@@ -1,30 +1,55 @@
-6. Un banco ha decidido aumentar el límite de crédito de las tarjetas de crédito de sus clientes. Si el cliente tiene una tarjeta tipo 1, el aumento será del 25%; si es tipo 2, el aumento será del 35%; si es tipo 3, el aumento será del 40%; y para cualquier otro tipo, el aumento será del 50%. Genere un algoritmo donde se ingrese el tipo de tarjeta y el crédito actual, luego mostrar el nuevo crédito aumentado. Haga uso de una función que, dado el tipo de tarjeta y el monto, calcule el crédito aumentado.
+6. Juego de Piedra, Papel y Tijeras: Desarrolla un programa que simule el juego de piedra, papel y 
+tijeras contra la computadora. El usuario elegirá su jugada (piedra, papel o tijeras) y la computadora 
+generará su jugada de forma aleatoria. El programa determinará el ganador de cada ronda según las 
+reglas del juego. El juego continuará hasta que el usuario o la computadora gane 3 rondas. Muestra el 
+resultado final indicando el ganador del juego.
 
 #include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
-double f ( int tt, int ca ) {
-    switch(tt) {
-        case 1:
-            return ca * 1.25;
-            break;
-        case 2:
-            return ca * 1.35;
-            break;
-        case 3:
-            return ca * 1.40;
-            break;
-        default:
-            return ca * 1.50;
+void pipati(int victoriasUsuario, int victoriasComputadora){
+	srand(time(0)); // Inicializar la semilla para generar números aleatorios
+
+    while (victoriasUsuario < 3 && victoriasComputadora < 3) {
+        string opciones[] = {"piedra", "papel", "tijeras"};
+
+        int jugadaComputadora = rand() % 3;
+
+        string jugadaUsuario;
+        cout << "Elige tu jugada (piedra, papel o tijeras): ";
+        cin >> jugadaUsuario;
+
+        cout << "La computadora elige: " << opciones[jugadaComputadora] << endl;
+
+        if (jugadaUsuario == opciones[jugadaComputadora]) {
+            cout << "¡Empate!" << endl;
+        } else if ((jugadaUsuario == "piedra" && opciones[jugadaComputadora] == "tijeras") ||
+                   (jugadaUsuario == "papel" && opciones[jugadaComputadora] == "piedra") ||
+                   (jugadaUsuario == "tijeras" && opciones[jugadaComputadora] == "papel")) {
+            cout << "¡Ganaste esta ronda!" << endl;
+            victoriasUsuario++;
+        } else {
+            cout << "¡La computadora gana esta ronda!" << endl;
+            victoriasComputadora++;
+        }
+
+        cout << "Puntuacion: Usuario - " << victoriasUsuario << " | Computadora - " << victoriasComputadora << endl;
+        cout << endl;
+    }
+    if (victoriasUsuario == 3) {
+        cout << "¡Felicidades! Has ganado el juego." << endl;
+    } else {
+        cout << "¡La computadora ha ganado el juego! Mejor suerte la proxima vez." << endl;
     }
 }
 
+
 int main() {
-    int tt, ca;
-    cout << "Ingrese el tipo de tarjeta: ";
-    cin >> tt;
-    cout << "Ingrese el crédito actual: ";
-    cin >> ca;
-    cout << "Tu nuevo credito aumentado es " << f(tt, ca) << endl;
+    int victoriasUsuario = 0;
+    int victoriasComputadora = 0;
+	pipati(victoriasUsuario, victoriasComputadora);
     return 0;
 }
